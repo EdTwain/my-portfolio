@@ -131,9 +131,59 @@ const projectData = {
         challenges: 'The existing platform had poor navigation, a confusing checkout process, and was not mobile-friendly. User testing revealed frustration with product filtering and search functionality.',
         solutions: 'Implemented a new information architecture, redesigned the product browsing experience with advanced filters, simplified the checkout process, and created a fully responsive design that works seamlessly across all devices.',
         results: 'After launching the redesigned platform, the client saw a 35% increase in conversion rate, 28% decrease in cart abandonment, and a 42% increase in mobile sales within the first three months.',
-        technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Redux', 'Node.js', 'Express', 'MongoDB']
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Redux', 'Node.js', 'Express', 'MongoDB'],
+
+        link: 'https://e-commerce-platform-redesign.com/project1',
     },
-    // ... (Other project objects remain unchanged)
+    
+
+    2: {
+        title: 'Mobile App for Fitness Tracking',
+        client: 'FitLife Inc.',
+        year: '2023',
+        description: 'Developed a mobile application for fitness tracking that allows users to monitor their workouts, set fitness goals, and track progress over time. The app includes features such as workout logging, goal setting, social sharing, and integration with wearable devices.',
+        challenges: 'The main challenge was to create an intuitive user interface that encourages regular use while providing comprehensive tracking features. Additionally, ensuring compatibility with various wearable devices was crucial.',
+        solutions: 'Designed a user-friendly interface with easy navigation, implemented gamification elements to motivate users, and integrated APIs for popular wearable devices to sync data seamlessly.',
+        results: 'The app achieved over 100,000 downloads within the first six months, with a 4.5-star rating on app stores. User engagement metrics showed that 70% of users logged workouts at least three times a week.',
+        technologies: ['Flutter', 'Dart', 'Firebase', 'RESTful APIs', 'Google Fit API', 'Apple HealthKit'],
+
+        link:"https://fitness_tracking_app.com/project2"
+
+    },
+    3: {
+        title: 'Analytics Dashboard ',
+        client: 'DataVision Saas',
+        year: '2024',
+        description:
+           'A web dashboard for visualizing real-time analytics across key business KPIs',
+        challenges: 
+            'The main challenge was to handle large data sets efficiently and provide dynamic visualizations.',
+        solutions:
+            'Designed a user-friendly interface with customizable widgets and real-time data updates.',
+        results:
+            'Reduced data latency by 60% and improved reporting speed significantly',
+        technologies:
+            ['React', 'Chart.js', 'Node.js', 'Express', 'TailwindCSS'],
+        link: 'https://Analytics-Dashboard.com/project3',
+    },
+    
+    4: {title: 'Corporate Website Redesign',
+        client: 'BrightCorp',
+        year: '2025',
+        description:
+           'A full redesign focused on storytelling, accessibility, and lead generation.',
+        challenges: 
+           'Outdated design and low engagement due to poor information structure.',
+        solutions:
+            'Implemented UX-based navigation, responsive design, and SEO optimization.',
+        results:
+            'Increased organic traffic by 50% and improved user engagement metrics significantly.',
+        technologies:
+            ['HTML', 'CSS', 'JavaScript', 'UX Research', 'SEO'],
+        link: 'https://Analytics-Dashboard.com/project3',
+
+    }
+
 };
 
 // Open modal with project details
@@ -144,7 +194,7 @@ viewProjectButtons.forEach(button => {
         modalTitle.textContent = project.title;
         modalContent.innerHTML = generateProjectModalContent(project, button);
         
-        // Show modal
+        // Show / Open modal
         projectModal.classList.remove('opacity-0', 'invisible');
         document.body.style.overflow = 'hidden';
     });
@@ -152,50 +202,71 @@ viewProjectButtons.forEach(button => {
 
 // Generate modal content
 function generateProjectModalContent(project, button) {
-    return `
-        <div class="space-y-6">
-            <img src="${button.closest('.project-card').querySelector('img').src}" alt="${project.title}" class="w-full h-auto rounded-lg mb-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <h4 class="text-sm font-semibold text-gray-700 mb-2">Client</h4>
-                    <p class="text-gray-600">${project.client}</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <h4 class="text-sm font-semibold text-gray-700 mb-2">Year</h4>
-                    <p class="text-gray-600">${project.year}</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-lg">
-                    <h4 class="text-sm font-semibold text-gray-700 mb-2">Category</h4>
-                    <p class="text-gray-600">${button.closest('.project-card').querySelector('.flex.flex-wrap.gap-2').textContent.trim()}</p>
-                </div>
-            </div>
-            <div>
-                <h4 class="text-lg font-semibold text-gray-800 mb-3">Project Overview</h4>
-                <p class="text-gray-600 mb-6">${project.description}</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Challenges</h4>
-                    <p class="text-gray-600">${project.challenges}</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Solutions</h4>
-                    <p class="text-gray-600">${project.solutions}</p>
-                </div>
-            </div>
-            <div>
-                <h4 class="text-lg font-semibold text-gray-800 mb-3">Results</h4>
-                <p class="text-gray-600 mb-6">${project.results}</p>
-            </div>
-            <div>
-                <h4 class="text-lg font-semibold text-gray-800 mb-3">Technologies Used</h4>
-                <div class="flex flex-wrap gap-2">
-                    ${project.technologies.map(tech => `<span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-medium rounded-full">${tech}</span>`).join('')}
-                </div>
-            </div>
+  return `
+    <div class="space-y-6">
+      <img src="${button.closest('.project-card').querySelector('img').src}" 
+           alt="${project.title}" 
+           class="w-full h-auto rounded-lg mb-6">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h4 class="text-sm font-semibold text-gray-700 mb-2">Client</h4>
+          <p class="text-gray-600">${project.client}</p>
         </div>
-    `;
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h4 class="text-sm font-semibold text-gray-700 mb-2">Year</h4>
+          <p class="text-gray-600">${project.year}</p>
+        </div>
+        <div class="p-4 bg-gray-50 rounded-lg">
+          <h4 class="text-sm font-semibold text-gray-700 mb-2">Category</h4>
+          <p class="text-gray-600">${button.closest('.project-card')
+            .getAttribute('data-category')
+            .toUpperCase()}</p>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold text-gray-800 mb-3">Project Overview</h4>
+        <p class="text-gray-600 mb-6">${project.description}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-lg font-semibold text-gray-800 mb-3">Challenges</h4>
+          <p class="text-gray-600">${project.challenges}</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-gray-800 mb-3">Solutions</h4>
+          <p class="text-gray-600">${project.solutions}</p>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold text-gray-800 mb-3">Results</h4>
+        <p class="text-gray-600 mb-6">${project.results}</p>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold text-gray-800 mb-3">Technologies Used</h4>
+        <div class="text-center mt-8">
+  <button onclick="showPaymentPopup()" 
+          class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-blue-600 transition">
+    Visit Project
+  </button>
+</div>
+
+      </div>
+
+      <div class="text-center">
+        <a href="${project.link}" target="_blank" 
+           class="inline-block px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-blue-600 transition">
+          Visit Project ↗
+        </a>
+      </div>
+    </div>
+  `;
 }
+
 
 // Close modal
 closeModal.addEventListener('click', () => {
@@ -210,6 +281,46 @@ projectModal.addEventListener('click', (e) => {
         document.body.style.overflow = 'auto';
     }
 });
+
+// Payment Popup Logic
+const paymentPopup = document.getElementById('payment-popup');
+const closePayment = document.getElementById('close-payment');
+
+// Function to open popup
+function showPaymentPopup() {
+  paymentPopup.classList.remove('opacity-0', 'invisible');
+  const popupBox = paymentPopup.querySelector('div');
+  setTimeout(() => {
+    popupBox.classList.remove('scale-95', 'opacity-0');
+    popupBox.classList.add('scale-100', 'opacity-100');
+  }, 50);
+  document.body.style.overflow = 'hidden';
+}
+
+// Function to close popup
+function closePaymentPopup() {
+  const popupBox = paymentPopup.querySelector('div');
+  popupBox.classList.add('scale-95', 'opacity-0');
+  popupBox.classList.remove('scale-100', 'opacity-100');
+  setTimeout(() => {
+    paymentPopup.classList.add('opacity-0', 'invisible');
+    document.body.style.overflow = 'auto';
+  }, 300);
+}
+
+// Close with button
+closePayment.addEventListener('click', closePaymentPopup);
+
+// Close when clicking outside popup
+paymentPopup.addEventListener('click', (e) => {
+  if (e.target === paymentPopup) {
+    closePaymentPopup();
+  }
+});
+
+
+
+
 
 // Contact Form Handling
 const contactForm = document.getElementById('contact-form');
