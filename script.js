@@ -157,9 +157,9 @@ const projectData = {
         description:
            'A web dashboard for visualizing real-time analytics across key business KPIs',
         challenges: 
-            'The main challenge was to handle large data sets efficiently and provide dynamic visualizations.',
+            'Managing large, real-time datasets while maintaining fast performance and clear, interactive visuals.',
         solutions:
-            'Designed a user-friendly interface with customizable widgets and real-time data updates.',
+            'Optimized data handling with caching and WebSockets, and built a modular React + Chart.js dashboard for smooth, dynamic insights',
         results:
             'Reduced data latency by 60% and improved reporting speed significantly',
         technologies:
@@ -173,9 +173,9 @@ const projectData = {
         description:
            'A full redesign focused on storytelling, accessibility, and lead generation.',
         challenges: 
-           'Outdated design and low engagement due to poor information structure.',
+           'Outdated design and poor content hierarchy led to low user engagement and weak brand perception.',
         solutions:
-            'Implemented UX-based navigation, responsive design, and SEO optimization.',
+            'Redesigned the site with a clear UX structure, responsive layouts, and SEO-focused enhancements to boost visibility and conversions.',
         results:
             'Increased organic traffic by 50% and improved user engagement metrics significantly.',
         technologies:
@@ -200,6 +200,7 @@ viewProjectButtons.forEach(button => {
     });
 });
 
+// Generate modal content
 // Generate modal content
 function generateProjectModalContent(project, button) {
   return `
@@ -248,19 +249,21 @@ function generateProjectModalContent(project, button) {
 
       <div>
         <h4 class="text-lg font-semibold text-gray-800 mb-3">Technologies Used</h4>
-        <div class="text-center mt-8">
-  <button onclick="showPaymentPopup()" 
-          class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-blue-600 transition">
-    Visit Project
-  </button>
-</div>
-
+        <ul class="flex flex-wrap gap-2 mb-6">
+          ${project.technologies
+            .map(
+              tech => `
+              <li class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">${tech}</li>
+            `
+            )
+            .join('')}
+        </ul>
       </div>
 
       <div class="text-center">
-        <a href="${project.link}" target="_blank" 
+        <a href="${project.link}" target="_blank"
            class="inline-block px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-blue-600 transition">
-          Visit Project ↗
+          Visit Project
         </a>
       </div>
     </div>
@@ -281,45 +284,6 @@ projectModal.addEventListener('click', (e) => {
         document.body.style.overflow = 'auto';
     }
 });
-
-// Payment Popup Logic
-const paymentPopup = document.getElementById('payment-popup');
-const closePayment = document.getElementById('close-payment');
-
-// Function to open popup
-function showPaymentPopup() {
-  paymentPopup.classList.remove('opacity-0', 'invisible');
-  const popupBox = paymentPopup.querySelector('div');
-  setTimeout(() => {
-    popupBox.classList.remove('scale-95', 'opacity-0');
-    popupBox.classList.add('scale-100', 'opacity-100');
-  }, 50);
-  document.body.style.overflow = 'hidden';
-}
-
-// Function to close popup
-function closePaymentPopup() {
-  const popupBox = paymentPopup.querySelector('div');
-  popupBox.classList.add('scale-95', 'opacity-0');
-  popupBox.classList.remove('scale-100', 'opacity-100');
-  setTimeout(() => {
-    paymentPopup.classList.add('opacity-0', 'invisible');
-    document.body.style.overflow = 'auto';
-  }, 300);
-}
-
-// Close with button
-closePayment.addEventListener('click', closePaymentPopup);
-
-// Close when clicking outside popup
-paymentPopup.addEventListener('click', (e) => {
-  if (e.target === paymentPopup) {
-    closePaymentPopup();
-  }
-});
-
-
-
 
 
 // Contact Form Handling
